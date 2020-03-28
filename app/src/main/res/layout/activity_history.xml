@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistoryActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:clipToPadding="false"
+        app:cardBackgroundColor="#00BCD4"
+        app:cardCornerRadius="48dp"
+        app:cardElevation="16dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/profile_dokter"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/tv_namaDokter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_dokter"
+                app:layout_constraintStart_toEndOf="@+id/profile_dokter"
+                app:layout_constraintTop_toTopOf="@+id/profile_dokter" />
+
+            <TextView
+                android:id="@+id/saran_dokter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:ems="22"
+                android:lines="16"
+                android:maxLines="30"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet arcu sed ex placerat, sit amet commodo ante consequat. Nullam facilisis ac nunc eget ullamcorper. Aenean sodales, eros sed pretium tincidunt, enim lorem porta purus, et sollicitudin arcu nibh quis ligula. Sed bibendum dignissim nulla, id sollicitudin sem auctor in. Ut hendrerit dolor a metus tempor, sit amet finibus elit vehicula. Suspendisse sit amet vestibulum velit, quis bibendum erat. Ut eget urna vel enim venenatis rhoncus. In tempor orci at pellentesque elementum. Aliquam egestas, libero vel placerat consequat, nisl augue bibendum ligula, sed vehicula diam nibh ac libero. Sed et dui at metus consequat maximus. Nulla pretium felis sit amet orci pellentesque, vitae convallis ante sollicitudin. Nunc sagittis viverra elit. In quis lectus semper, aliquam orci eget, interdum felis."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_dokter" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="16dp"
+                android:text=" Obat Yang di Sarankan"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saran_dokter" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="History"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
