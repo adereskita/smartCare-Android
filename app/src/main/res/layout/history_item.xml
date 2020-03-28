@@ -20,51 +20,6 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp">
 
-            <Button
-                android:id="@+id/bt_share"
-                android:layout_width="72dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="#90C9E0"
-                android:drawableRight="@drawable/ic_send_black_24dp"
-                android:drawingCacheQuality="high"
-                android:duplicateParentState="true"
-                android:editable="true"
-                android:ellipsize="end"
-                android:shadowColor="#DFE4E6"
-                android:text="Share"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_tanggal" />
-
-            <TextView
-                android:id="@+id/tv_jenis1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Kognum"
-                android:typeface="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_judul" />
-
-            <TextView
-                android:id="@+id/tv_jenis2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Alendronate"
-                android:typeface="normal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_jenis1" />
-
             <TextView
                 android:id="@+id/tv_tanggal"
                 android:layout_width="wrap_content"
@@ -79,28 +34,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/tv_ketJenis1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_jenis1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_jenis1" />
-
-            <TextView
-                android:id="@+id/tv_ketJenis2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_jenis2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_jenis2" />
-
-            <TextView
                 android:id="@+id/tv_judul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -112,6 +45,42 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_keterangan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:height="50dp"
+                android:digits="50"
+                android:ems="17"
+                android:lines="2"
+                android:maxEms="20"
+                android:maxLines="2"
+                android:minEms="10"
+                android:minLines="1"
+                android:text="Lorem Ipsum"
+                app:layout_constraintBottom_toTopOf="@+id/tv_tanggal"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintHorizontal_bias="0.035"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_judul" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher_round" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

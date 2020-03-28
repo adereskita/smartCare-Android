@@ -314,22 +314,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button3"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="62dp"
-            android:layout_height="22dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:background="#00FFFFFF"
-            android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
-            android:text="See All"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="#00BCD4"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
