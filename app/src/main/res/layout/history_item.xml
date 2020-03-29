@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="8dp"
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
@@ -12,8 +14,8 @@
         android:layout_centerInParent="true"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp">
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,7 +36,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/tv_judul"
+                android:id="@+id/tv_symptom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -69,7 +71,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintHorizontal_bias="0.035"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_judul" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_symptom" />
 
             <ImageView
                 android:id="@+id/imageView"

@@ -55,7 +55,7 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="240dp"
         android:layout_marginTop="16dp"
         android:layout_weight="5"
         android:alignmentMode="alignMargins"
@@ -74,7 +74,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             app:cardCornerRadius="24dp"
-            app:cardElevation="16dp">
+            app:cardElevation="5dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -84,11 +84,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="2dp"
                     android:text="Blood"
                     android:textColor="#4B4747"
                     android:textSize="16sp"
@@ -105,7 +106,8 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"></TextView>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"></TextView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -121,7 +123,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             app:cardCornerRadius="24dp"
-            app:cardElevation="16dp">
+            app:cardElevation="5dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -136,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="2dp"
                     android:text="Height"
                     android:textColor="#4B4747"
                     android:textSize="16sp"
@@ -154,7 +156,8 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -162,11 +165,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="11dp"
                     android:text="Cm"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView7" />
+                    app:layout_constraintStart_toEndOf="@+id/textView7"
+                    app:layout_constraintTop_toTopOf="@+id/textView7" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -182,7 +185,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             app:cardCornerRadius="24dp"
-            app:cardElevation="16dp">
+            app:cardElevation="5dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -197,7 +200,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="2dp"
                     android:text="Weight"
                     android:textColor="#4B4747"
                     android:textSize="16sp"
@@ -215,7 +218,8 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -223,11 +227,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="11dp"
                     android:text="Kg"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView9" />
+                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
+                    app:layout_constraintStart_toEndOf="@+id/textView9"
+                    app:layout_constraintTop_toTopOf="@+id/textView9" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -243,7 +247,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
             app:cardCornerRadius="24dp"
-            app:cardElevation="16dp">
+            app:cardElevation="5dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -253,11 +257,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="2dp"
                     android:text="Age"
                     android:textColor="#4B4747"
                     android:textSize="16sp"
@@ -275,7 +280,8 @@
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -283,11 +289,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="11dp"
                     android:text="Years"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView11" />
+                    app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                    app:layout_constraintStart_toEndOf="@+id/textView11"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -301,12 +307,12 @@
         android:padding="0dp">
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/tvHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="History"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -317,14 +323,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/re"
+        android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="4dp"
         android:orientation="horizontal"
-        android:scrollbars="horizontal">
+        android:scrollbars="none">
 
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -13,13 +13,14 @@ import java.util.zip.Inflater;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import d3ifcool.org.Models.Patients;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private Context mContext;
-    private ArrayList mData;
+    private ArrayList<Patients> mData;
 
-    public RecyclerViewAdapter(Context mContext, ArrayList mData) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<Patients> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -35,7 +36,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // TODO : di isi dengan textview, glider, dsb..
-        holder.tvJudul.setText((Integer) mData.get(position));
+        Patients mPatient = mData.get(position);
+        holder.tvSymptomp.setText(mPatient.getSymptomp());
+//        holder.imageView.setText(mPatient.getSymptomp());
+        holder.tvKeterangan.setText(mPatient.getKeterangan_doc());
+        holder.tvTanggal.setText(mPatient.getTanggal());
     }
 
     @Override
@@ -45,14 +50,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         //private Textview
-        private TextView tvJudul, tvKeterangan, tvTanggal;
+        private TextView tvSymptomp, tvKeterangan, tvTanggal;
         private ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
-            tvJudul = itemView.findViewById(R.id.tv_judul);
+            tvSymptomp = itemView.findViewById(R.id.tv_symptom);
             tvKeterangan = itemView.findViewById(R.id.tv_keterangan);
             tvTanggal = itemView.findViewById(R.id.tv_tanggal);
 
