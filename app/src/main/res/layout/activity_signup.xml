@@ -10,21 +10,21 @@
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:src="@drawable/smart_care_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:text="Login"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="Sign Up"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -38,19 +38,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/tv_smartCare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Smart Care"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_constraintCard"
@@ -75,26 +62,26 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:indeterminate="true"
             android:indeterminateTint="#3052AE"
             android:indeterminateTintMode="src_atop"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_signUp" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_signUp"
             android:layout_width="200dp"
             android:layout_height="42dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/round_button"
-            android:text="Login"
+            android:text="Sign Up"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
             android:textStyle="bold"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_password" />
@@ -102,12 +89,12 @@
         <EditText
             android:id="@+id/edt_password"
             android:layout_width="0dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
             android:background="@drawable/round_edittext_bg"
             android:drawableLeft="@drawable/ic_lock"
             android:drawablePadding="4dp"
@@ -117,28 +104,48 @@
             android:paddingLeft="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
         <EditText
             android:id="@+id/edt_email"
             android:layout_width="0dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
             android:background="@drawable/round_edittext_bg"
             android:drawableLeft="@drawable/ic_mail"
             android:drawablePadding="4dp"
             android:ems="10"
             android:hint="Email"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:paddingLeft="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_nama" />
+
+        <EditText
+            android:id="@+id/edt_nama"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_edittext_bg"
+            android:drawableLeft="@drawable/ic_mail"
+            android:drawablePadding="4dp"
+            android:ems="10"
+            android:hint="Nama"
+            android:inputType="textPersonName"
+            android:paddingLeft="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -148,5 +155,18 @@
             app:layout_constraintGuide_begin="119dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_smartCare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Smart Care"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="32dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
