@@ -55,27 +55,6 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mDbRef = mDatabase.getReference();
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
-        UserId = user.getUid();
-        userEmail = user.getEmail();
-
-        if (mFirebaseAuth.getCurrentUser() == null){
-            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
-            finish();
-        }
-
-        //get current user
-        final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        mAuthStateListner = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser cUser = firebaseAuth.getCurrentUser();
-
-                if (cUser == null) {
-                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
-                    finish();
-                }
-            }
-        };
 
         tvNama = findViewById(R.id.tv_nama);
         tvDarah = findViewById(R.id.tv_tekanan_darah);
@@ -83,6 +62,19 @@ public class MainActivity extends AppCompatActivity {
         tvBerat = findViewById(R.id.tv_berat);
         tvUmur = findViewById(R.id.tv_umur);
 
+        if (mFirebaseAuth.getCurrentUser() == null){
+            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+            finish();
+        } else {
+            UserId = user.getUid();
+            userEmail = user.getEmail();
+
+            setData();
+        }
+
+    }
+
+    private void setData() {
 
         DatabaseReference users = mDbRef.child("user").child(UserId);
         users.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     tvNama.setAllCaps(true);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
