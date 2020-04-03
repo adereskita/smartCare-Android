@@ -8,13 +8,13 @@
 
     <ImageView
         android:id="@+id/iv_symptomps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/welcome_image"/>
 
     <TextView
         android:id="@+id/textView"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_symptomps">
 
         <ImageView
-            android:id="@+id/iv_docter"
+            android:id="@+id/iv_dokter"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_marginStart="24dp"
@@ -50,23 +50,23 @@
             app:srcCompat="@mipmap/ic_launcher_round" />
 
         <TextView
-            android:id="@+id/tv_saranDokter"
+            android:id="@+id/tv_deskripsi"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
-            android:maxLines="30"
-            android:textColor="#212121"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin imperdiet arcu sed ex placerat, sit amet commodo ante consequat. Nullam facilisis ac nunc eget ullamcorper. Aenean sodales, eros sed pretium tincidunt, enim lorem porta purus, et sollicitudin arcu nibh quis ligula. Sed bibendum dignissim nulla, id sollicitudin sem auctor in. Ut hendrerit dolor a metus tempor, sit amet finibus elit vehicula. Suspendisse sit amet vestibulum velit, quis bibendum erat. Ut eget urna vel enim venenatis rhoncus. In tempor orci at pellentesque elementum. Aliquam egestas, libero vel placerat consequat, nisl augue bibendum ligula, sed vehicula diam nibh ac libero. Sed et dui at metus consequat maximus. Nulla pretium felis sit amet orci pellentesque, vitae convallis ante sollicitudin. Nunc sagittis viverra elit. In quis lectus semper, aliquam orci eget, interdum felis."
+            android:maxHeight="180dp"
+            android:maxLines="25"
+            android:text=""
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_docter" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_dokter" />
 
         <TextView
             android:id="@+id/textView14"
@@ -76,24 +76,24 @@
             android:layout_marginLeft="16dp"
             android:text="Obat Yang di Sarankan"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#212121"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <TextView
-            android:id="@+id/tv_namaDokter"
+            android:id="@+id/tv_dokter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:text="dr.Ivan Sp.or"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#212121"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_docter"
-            app:layout_constraintStart_toEndOf="@+id/iv_docter"
-            app:layout_constraintTop_toTopOf="@+id/iv_docter" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_dokter"
+            app:layout_constraintStart_toEndOf="@+id/iv_dokter"
+            app:layout_constraintTop_toTopOf="@+id/iv_dokter" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_obat"
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".7" />
+            app:layout_constraintGuide_percent=".6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,32 +1,43 @@
 package d3ifcool.org.Models;
 
 public class Patients {
-    private String patient_id, nama, symptomp_id, symptomp, tipe_darah, image_id,
-            keterangan_doc, tanggal;
+    private String id_check, email, nama, disease, tipe_darah, image_id,
+            deskripsi, tanggal;
     private int tinggi, berat, umur;
 
-    public Patients(String patient_id, String nama, String symptomp_id, String symptomp,
-                    String tipe_darah, String image_id, String keterangan_doc,
+    public Patients(String id_check, String email, String nama, String disease,
+                    String tipe_darah, String image_id, String deskripsi,
                     String tanggal, int tinggi, int berat, int umur) {
-        this.patient_id = patient_id;
+        this.id_check = id_check;
+        this.email = email;
         this.nama = nama;
-        this.symptomp_id = symptomp_id;
-        this.symptomp = symptomp;
+        this.disease = disease;
         this.tipe_darah = tipe_darah;
         this.image_id = image_id;
-        this.keterangan_doc = keterangan_doc;
+        this.deskripsi = deskripsi;
         this.tanggal = tanggal;
         this.tinggi = tinggi;
         this.berat = berat;
         this.umur = umur;
     }
 
-    public Patients(String nama, String symptomp, String image_id, String keterangan_doc, String tanggal) {
-        this.nama = nama;
-        this.symptomp = symptomp;
-        this.image_id = image_id;
-        this.keterangan_doc = keterangan_doc;
+    public Patients(String id_check, String email, String disease, String deskripsi, String tanggal) {
+        this.id_check = id_check;
+        this.email = email;
+        this.disease = disease;
+        this.deskripsi = deskripsi;
         this.tanggal = tanggal;
+    }
+
+    public Patients() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTanggal() {
@@ -45,36 +56,28 @@ public class Patients {
         this.image_id = image_id;
     }
 
-    public String getKeterangan_doc() {
-        return keterangan_doc;
+    public String getDeskripsi() {
+        return deskripsi;
     }
 
-    public void setKeterangan_doc(String keterangan_doc) {
-        this.keterangan_doc = keterangan_doc;
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 
-    public String getSymptomp_id() {
-        return symptomp_id;
+    public String getDisease() {
+        return disease;
     }
 
-    public void setSymptomp_id(String symptomp_id) {
-        this.symptomp_id = symptomp_id;
+    public void setDisease(String disease) {
+        this.disease = disease;
     }
 
-    public String getSymptomp() {
-        return symptomp;
+    public String getId_check() {
+        return id_check;
     }
 
-    public void setSymptomp(String symptomp) {
-        this.symptomp = symptomp;
-    }
-
-    public String getPatient_id() {
-        return patient_id;
-    }
-
-    public void setPatient_id(String patient_id) {
-        this.patient_id = patient_id;
+    public void setId_check(String id_check) {
+        this.id_check = id_check;
     }
 
     public String getNama() {

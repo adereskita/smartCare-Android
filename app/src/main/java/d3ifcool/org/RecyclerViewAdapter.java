@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext;
     private ArrayList<Patients> mData;
+    private static ListClickListener mListener;
+
 
     public RecyclerViewAdapter(Context mContext, ArrayList<Patients> mData) {
         this.mContext = mContext;
@@ -37,10 +40,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // TODO : di isi dengan textview, glider, dsb..
         Patients mPatient = mData.get(position);
-        holder.tvSymptomp.setText(mPatient.getSymptomp());
+        holder.tvSymptomp.setText(mPatient.getDisease());
 //        holder.imageView.setText(mPatient.getSymptomp());
-        holder.tvKeterangan.setText(mPatient.getKeterangan_doc());
+        holder.tvKeterangan.setText(mPatient.getDeskripsi());
         holder.tvTanggal.setText(mPatient.getTanggal());
+
+        deskripsi = mPatient.getDeskripsi();
+        disease = mPatient.getDisease();
+        id = mPatient.getId_check();
+        tanggal = mPatient.getTanggal();
     }
 
     @Override
@@ -48,26 +56,56 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public interface ListClickListener {
+        void onItemClick(int position,View v, String deskripsi, String disease, String id);
+    }
+
+    public void setOnItemClickListener(ListClickListener clickListener) {
+        RecyclerViewAdapter.mListener = clickListener;
+    }
+
+    private String deskripsi, disease, id, tanggal;
+
+    public Patients getItem(int position) {
+        return mData.get(position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         //private Textview
         private TextView tvSymptomp, tvKeterangan, tvTanggal;
-        private ImageView imageView;
+        private ImageButton IbShare;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView);
             tvSymptomp = itemView.findViewById(R.id.tv_symptom);
             tvKeterangan = itemView.findViewById(R.id.tv_keterangan);
             tvTanggal = itemView.findViewById(R.id.tv_tanggal);
+            IbShare = itemView.findViewById(R.id.ivb_share);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setFocusable(true);
+            itemView.setClickable(true);
+
+            itemView.setOnClickListener(this);
+
+            IbShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(mContext, HistoryActivity.class);
-                    mContext.startActivity(i);
+                    String shareBody = "Penyakit : "+disease + "\n" +
+                                        "Tanggal : "+tanggal + "\n" +
+                                        "Saran Dokter : " +deskripsi;
+                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "SmartCare Report: "+disease +" "+ tanggal);
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                    mContext.startActivity(Intent.createChooser(sharingIntent, "Share your data with"));
                 }
             });
+        }
+
+        @Override
+        public void onClick(View v) {
+            mListener.onItemClick(getAdapterPosition(), v, deskripsi, disease, id);
         }
     }
 }

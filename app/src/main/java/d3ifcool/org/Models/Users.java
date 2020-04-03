@@ -9,6 +9,10 @@ public class Users {
         this.email = email;
     }
 
+    public Users() {
+
+    }
+
     public String getUser_id() {
         return user_id;
     }
