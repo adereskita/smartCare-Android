@@ -15,7 +15,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         app:cardCornerRadius="14dp"
-        app:cardElevation="2dp">
+        app:cardElevation="200dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,15 +58,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:height="50dp"
-                android:digits="50"
-                android:ems="17"
-                android:lines="2"
-                android:maxEms="20"
-                android:maxLines="2"
-                android:minEms="10"
-                android:minLines="1"
-                android:text="Lorem Ipsum"
+                android:text="No Description."
                 app:layout_constraintBottom_toTopOf="@+id/tv_tanggal"
                 app:layout_constraintEnd_toStartOf="@+id/ivb_share"
                 app:layout_constraintHorizontal_bias="0.035"
