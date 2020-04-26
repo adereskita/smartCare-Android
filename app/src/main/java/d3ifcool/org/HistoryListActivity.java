@@ -2,20 +2,19 @@ package d3ifcool.org;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import d3ifcool.org.Models.Patients;
 import d3ifcool.org.Models.Users;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,14 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class HistoryListActivity extends AppCompatActivity {
 
     public static final String EXTRA_DISEASE = "extra_disease";
     public static final String EXTRA_ID = "extra_id";
     public static final String EXTRA_DESKRIPSI = "extra_deskripsi";
 
     private ArrayList<Patients> mListPatients;
-    private RecyclerViewAdapter adapter;
+    private RecyclerHistoryAdapter adapter;
     private RecyclerView recyclerView;
 
     private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_history_list);
 
         //auth user
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -58,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
         mDbRef = mDatabase.getReference();
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
 
-        tvNama = findViewById(R.id.tv_nama);
-        tvDarah = findViewById(R.id.tv_tekanan_darah);
-        tvTinggi = findViewById(R.id.tv_tinggi);
-        tvBerat = findViewById(R.id.tv_berat);
-        tvUmur = findViewById(R.id.tv_umur);
-        btn_see_more = findViewById(R.id.btn_see_more);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        recyclerView = findViewById(R.id.rv_history_list);
 
         if (mFirebaseAuth.getCurrentUser() == null){
             startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
@@ -75,38 +74,9 @@ public class MainActivity extends AppCompatActivity {
             setData();
         }
 
-        btn_see_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, HistoryListActivity.class);
-                startActivity(i);
-            }
-        });
-
     }
 
     private void setData() {
-
-        DatabaseReference users = mDbRef.child("user").child(UserId);
-        users.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                if (datasnapshot.exists()){
-                    Users mData = new Users();
-                    mData.setNama(datasnapshot.getValue(Users.class).getNama());
-
-                    tvNama.setText(mData.getNama());
-                    tvNama.setAllCaps(true);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-        recyclerView = findViewById(R.id.rv_history);
 
         DatabaseReference symtomps = mDbRef.child("Pasien");
         Query mSearchQuery = symtomps.orderByChild("email").equalTo(userEmail);
@@ -137,29 +107,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void RecyclerViewInit() {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,
-                RecyclerView.HORIZONTAL, false);
+                RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new RecyclerViewAdapter(this, mListPatients);
+        adapter = new RecyclerHistoryAdapter(this, mListPatients);
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new RecyclerViewAdapter.ListClickListener() {
+        adapter.setOnItemClickListener(new RecyclerHistoryAdapter.ListClickListener() {
             @Override
             public void onItemClick(int position, View v, String deskripsi, String disease, String id) {
-                Intent i = new Intent(MainActivity.this, HistoryActivity.class);
+                Intent i = new Intent(HistoryListActivity.this, HistoryActivity.class);
                 i.putExtra(EXTRA_ID, id);
                 i.putExtra(EXTRA_DISEASE, disease);
                 i.putExtra(EXTRA_DESKRIPSI, deskripsi);
                 startActivity(i);
             }
         });
+
     }
-
-
 }

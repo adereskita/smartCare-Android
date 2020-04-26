@@ -59,7 +59,7 @@ public class HistoryTest {
     }
 
     @Test
-    public void StepTesting(){
+    public void HistoryTesting(){
 
         try {
             Thread.sleep(7000);

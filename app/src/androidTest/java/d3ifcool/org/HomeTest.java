@@ -46,7 +46,7 @@ public class HomeTest {
     }
 
     @Test
-    public void StepTesting(){
+    public void HomeTesting(){
 
         try {
             Thread.sleep(7000);

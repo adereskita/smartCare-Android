@@ -86,7 +86,7 @@ public class ShareTest {
     }
 
     @Test
-    public void StepTesting(){
+    public void ShareTesting(){
 
         try {
             Thread.sleep(7000);
@@ -99,7 +99,6 @@ public class ShareTest {
 //        onView(withId(R.id.edt_email)).perform(typeText("testingMe@gmail.com"));
 //        sleep1S();
 //        onView(withId(R.id.edt_password)).perform(typeText("adereskita12"));
-
         onView(withId(R.id.edt_email)).perform(typeText("ade.reskita@yahoo.com"));
         sleep1S();
         onView(withId(R.id.edt_password)).perform(typeText("adereskita12"));

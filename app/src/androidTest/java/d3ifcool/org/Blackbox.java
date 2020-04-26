@@ -91,7 +91,7 @@ public class Blackbox {
     }
 
     @Test
-    public void StepTesting(){
+    public void Blackbox(){
 
         try {
             Thread.sleep(7000);
@@ -101,11 +101,7 @@ public class Blackbox {
 
         Espresso.onView(withId(R.id.btn_login)).perform(click());
         sleep3S();
-//        onView(withId(R.id.edt_email)).perform(typeText("testingMe@gmail.com"));
-//        sleep1S();
-//        onView(withId(R.id.edt_password)).perform(typeText("adereskita12"));
-
-        onView(withId(R.id.edt_email)).perform(typeText("ade.reskita@yahoo.com"));
+        onView(withId(R.id.edt_email)).perform(typeText("testingMe@gmail.com"));
         sleep1S();
         onView(withId(R.id.edt_password)).perform(typeText("adereskita12"));
         sleep1S();
