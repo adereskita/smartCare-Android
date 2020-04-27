@@ -2,10 +2,12 @@ package d3ifcool.org;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import d3ifcool.org.Models.Patients;
 import d3ifcool.org.Models.Users;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,9 +39,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter adapter;
     private RecyclerView recyclerView;
 
+    private CircleImageView circleImageView;
     private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur;
     private Button btn_see_more;
     private String UserId,userEmail;
+    private String gender = null;
+
+    private ConstraintLayout const_profile;
 
     //db
     private FirebaseAuth mFirebaseAuth;
@@ -64,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         tvBerat = findViewById(R.id.tv_berat);
         tvUmur = findViewById(R.id.tv_umur);
         btn_see_more = findViewById(R.id.btn_see_more);
+        const_profile = findViewById(R.id.const_profile);
+        circleImageView = findViewById(R.id.iv_picture);
 
         if (mFirebaseAuth.getCurrentUser() == null){
             startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
@@ -83,6 +91,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        const_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(i);
+            }
+        });
+        if (gender == null){
+            circleImageView.setImageResource(R.drawable.avatar);
+        }
     }
 
     private void setData() {
@@ -94,9 +112,18 @@ public class MainActivity extends AppCompatActivity {
                 if (datasnapshot.exists()){
                     Users mData = new Users();
                     mData.setNama(datasnapshot.getValue(Users.class).getNama());
+                    mData.setGender(datasnapshot.getValue(Users.class).getGender());
+
+                    gender = mData.getGender();
 
                     tvNama.setText(mData.getNama());
                     tvNama.setAllCaps(true);
+
+                    if (gender.equals("Pria")){
+                        circleImageView.setImageResource(R.drawable.man_avatar);
+                    } else if (gender.equals("Wanita")){
+                        circleImageView.setImageResource(R.drawable.woman_avatar);
+                    }
                 }
             }
             @Override

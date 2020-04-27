@@ -4,14 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profileActivity">
+    tools:context=".ProfileActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_editProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Edit Profile"
+        android:background="@drawable/round_button"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FEFEFE"
+        android:textStyle="bold"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -21,24 +27,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Nabilah Ridhanti Zikra"
+        android:text="Username"
         android:textAlignment="center"
         android:textSize="18sp"
+        android:textColor="#212121"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/iv_picture"
-        app:layout_constraintStart_toStartOf="@+id/iv_picture"
-        app:layout_constraintTop_toBottomOf="@+id/iv_picture" />
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
     <TextView
         android:id="@+id/tv_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:text="Profile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="28sp"
+        android:textColor="#212121"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/iv_picture"
-        app:layout_constraintStart_toStartOf="@+id/iv_picture"
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -49,6 +57,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:text="Jenis Kelamin"
+        android:textColor="#212121"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -60,6 +70,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
         android:text="Usia"
+        android:textColor="#212121"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -70,7 +82,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        android:text="No Handphone"
+        android:text="Tinggi"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#212121"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -81,7 +95,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        android:text="Alamat"
+        android:text="Berat Badan"
+        android:textColor="#212121"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -90,64 +106,80 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_picture"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:id="@+id/iv_profile"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="24dp"
-        android:src="@drawable/profile"
+        android:src="@drawable/woman_avatar"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        app:civ_border_width="1dp"
+        app:civ_border_color="#DBDBDB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profile" />
 
     <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_Gender"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_age"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_height"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toTopOf="@+id/textView17" />
 
     <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_weight"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_keyboard_arrow_left"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

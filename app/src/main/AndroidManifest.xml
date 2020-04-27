@@ -16,6 +16,13 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity android:name=".HistoryActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".EditProfileActivity"
+            android:parentActivityName=".ProfileActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ProfileActivity"/>
+        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".WelcomeActivity" />
