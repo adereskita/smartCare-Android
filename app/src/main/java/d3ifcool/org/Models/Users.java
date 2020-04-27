@@ -1,7 +1,7 @@
 package d3ifcool.org.Models;
 
 public class Users {
-    private String user_id, nama, email;
+    private String user_id, nama, email, gender, berat, umur, tinggi;
 
     public Users(String user_id, String nama, String email) {
         this.user_id = user_id;
@@ -9,8 +9,50 @@ public class Users {
         this.email = email;
     }
 
+    public Users(String user_id, String nama, String email, String gender, String berat, String umur, String tinggi) {
+        this.user_id = user_id;
+        this.nama = nama;
+        this.email = email;
+        this.gender = gender;
+        this.berat = berat;
+        this.umur = umur;
+        this.tinggi = tinggi;
+    }
+
     public Users() {
 
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getTinggi() {
+        return tinggi;
+    }
+
+    public void setTinggi(String tinggi) {
+        this.tinggi = tinggi;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBerat() {
+        return berat;
+    }
+
+    public void setBerat(String berat) {
+        this.berat = berat;
+    }
+
+    public String getUmur() {
+        return umur;
+    }
+
+    public void setUmur(String umur) {
+        this.umur = umur;
     }
 
     public String getUser_id() {
