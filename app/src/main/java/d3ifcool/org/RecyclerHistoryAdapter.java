@@ -51,7 +51,8 @@ public class RecyclerHistoryAdapter extends RecyclerView.Adapter<RecyclerHistory
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return  mData == null ? 0 : mData.size();
+//        return mData.size();
     }
 
     public interface ListClickListener {

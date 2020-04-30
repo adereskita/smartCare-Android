@@ -36,7 +36,7 @@ public class HistoryListActivity extends AppCompatActivity {
     private RecyclerHistoryAdapter adapter;
     private RecyclerView recyclerView;
 
-    private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur;
+    private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur, tvNull;
     private Button btn_see_more;
     private String UserId,userEmail;
 
@@ -50,6 +50,8 @@ public class HistoryListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_list);
+
+        tvNull = findViewById(R.id.tv_no_history);
 
         //auth user
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -117,6 +119,10 @@ public class HistoryListActivity extends AppCompatActivity {
 
         adapter = new RecyclerHistoryAdapter(this, mListPatients);
         recyclerView.setAdapter(adapter);
+
+        if (mListPatients != null) {
+            tvNull.setVisibility(View.GONE);
+        }
 
         adapter.setOnItemClickListener(new RecyclerHistoryAdapter.ListClickListener() {
             @Override

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     private CircleImageView circleImageView;
-    private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur;
+    private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur, tvNull;
     private Button btn_see_more;
     private String UserId,userEmail;
     private String gender = null;
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btn_see_more = findViewById(R.id.btn_see_more);
         const_profile = findViewById(R.id.const_profile);
         circleImageView = findViewById(R.id.iv_picture);
+        tvNull = findViewById(R.id.tv_no_history);
 
         if (mFirebaseAuth.getCurrentUser() == null){
             startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
@@ -119,10 +120,14 @@ public class MainActivity extends AppCompatActivity {
                     tvNama.setText(mData.getNama());
                     tvNama.setAllCaps(true);
 
-                    if (gender.equals("Pria")){
-                        circleImageView.setImageResource(R.drawable.man_avatar);
-                    } else if (gender.equals("Wanita")){
-                        circleImageView.setImageResource(R.drawable.woman_avatar);
+                    if (gender != null) {
+                        if (gender.equals("Pria")){
+                            circleImageView.setImageResource(R.drawable.man_avatar);
+                        } else if (gender.equals("Wanita")){
+                            circleImageView.setImageResource(R.drawable.woman_avatar);
+                        }
+                    } else {
+                        circleImageView.setImageResource(R.drawable.avatar);
                     }
                 }
             }
@@ -175,6 +180,10 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new RecyclerViewAdapter(this, mListPatients);
         recyclerView.setAdapter(adapter);
+
+        if (mListPatients != null) {
+            tvNull.setVisibility(View.GONE);
+        }
 
         adapter.setOnItemClickListener(new RecyclerViewAdapter.ListClickListener() {
             @Override

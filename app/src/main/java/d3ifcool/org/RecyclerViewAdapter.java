@@ -53,7 +53,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        // this will prevent app crash when recyclerview return null or 0
+        return  mData == null ? 0 : mData.size();
     }
 
     public interface ListClickListener {
