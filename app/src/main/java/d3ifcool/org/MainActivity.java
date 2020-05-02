@@ -11,13 +11,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     private CircleImageView circleImageView;
-    private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur, tvNull;
+    private TextView tvNama, tvSistol, tvDiastol, tvTinggi, tvBerat, tvUmur, tvNull;
     private Button btn_see_more;
     private String UserId,userEmail;
     private String gender = null;
@@ -65,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
 
         tvNama = findViewById(R.id.tv_nama);
-        tvDarah = findViewById(R.id.tv_tekanan_darah);
+        tvSistol = findViewById(R.id.tv_sistol);
+        tvDiastol = findViewById(R.id.tv_diastol);
         tvTinggi = findViewById(R.id.tv_tinggi);
         tvBerat = findViewById(R.id.tv_berat);
         tvUmur = findViewById(R.id.tv_umur);
@@ -114,8 +112,32 @@ public class MainActivity extends AppCompatActivity {
                     Users mData = new Users();
                     mData.setNama(datasnapshot.getValue(Users.class).getNama());
                     mData.setGender(datasnapshot.getValue(Users.class).getGender());
+                    mData.setUmur(datasnapshot.getValue(Users.class).getUmur());
+                    mData.setTinggi(datasnapshot.getValue(Users.class).getTinggi());
+                    mData.setBerat(datasnapshot.getValue(Users.class).getBerat());
+                    mData.setDiastol(datasnapshot.getValue(Users.class).getDiastol());
+                    mData.setSistol(datasnapshot.getValue(Users.class).getSistol());
 
                     gender = mData.getGender();
+
+                    if (mData.getUmur() != null) {
+                        tvUmur.setText(mData.getUmur());
+                    }
+                    if (mData.getBerat() != null) {
+                        tvBerat.setText(mData.getBerat());
+                    }
+                    if (mData.getTinggi() != null) {
+                        tvTinggi.setText(mData.getTinggi());
+                    }
+
+                    if (mData.getSistol() != null) {
+                        tvSistol.setText(mData.getSistol());
+                    }
+
+                    if (mData.getDiastol() != null) {
+                        tvDiastol.setText(mData.getDiastol());
+                    }
+
 
                     tvNama.setText(mData.getNama());
                     tvNama.setAllCaps(true);
