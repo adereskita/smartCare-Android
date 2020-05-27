@@ -44,7 +44,7 @@ public class RecyclerViewHistory extends RecyclerView.Adapter<RecyclerViewHistor
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return  mData == null ? 0 : mData.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

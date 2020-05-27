@@ -49,6 +49,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         disease = mPatient.getDisease();
         id = mPatient.getId_check();
         tanggal = mPatient.getTanggal();
+        id_check =  mPatient.getId_check();
+        dokter =  mPatient.getNama_dokter();
     }
 
     @Override
@@ -58,14 +60,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public interface ListClickListener {
-        void onItemClick(int position,View v, String deskripsi, String disease, String id);
+        void onItemClick(int position,View v, String deskripsi, String disease, String id, String dokter, String id_check);
     }
 
     public void setOnItemClickListener(ListClickListener clickListener) {
         RecyclerViewAdapter.mListener = clickListener;
     }
 
-    private String deskripsi, disease, id, tanggal;
+    private String deskripsi, disease, id, tanggal, id_check, dokter;
 
     public Patients getItem(int position) {
         return mData.get(position);
@@ -106,7 +108,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View v) {
-            mListener.onItemClick(getAdapterPosition(), v, deskripsi, disease, id);
+            mListener.onItemClick(getAdapterPosition(), v, deskripsi, disease, id, id_check, dokter);
         }
     }
 }
