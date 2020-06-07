@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_DISEASE = "extra_disease";
     public static final String EXTRA_ID = "extra_id";
+    public static final String EXTRA_ID_CHECK = "extra_id_check";
+    public static final String EXTRA_DOKTER = "extra_dokter";
     public static final String EXTRA_DESKRIPSI = "extra_deskripsi";
 
     private ArrayList<Patients> mListPatients;
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setData() {
-
+        // to show basic data user
         DatabaseReference users = mDbRef.child("user").child(UserId);
         users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -115,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
                     mData.setUmur(datasnapshot.getValue(Users.class).getUmur());
                     mData.setTinggi(datasnapshot.getValue(Users.class).getTinggi());
                     mData.setBerat(datasnapshot.getValue(Users.class).getBerat());
-                    mData.setDiastol(datasnapshot.getValue(Users.class).getDiastol());
-                    mData.setSistol(datasnapshot.getValue(Users.class).getSistol());
+//                    mData.setDiastol(datasnapshot.getValue(Users.class).getDiastol());
+//                    mData.setSistol(datasnapshot.getValue(Users.class).getSistol());
 
                     gender = mData.getGender();
 
@@ -129,15 +131,6 @@ public class MainActivity extends AppCompatActivity {
                     if (mData.getTinggi() != null) {
                         tvTinggi.setText(mData.getTinggi());
                     }
-
-                    if (mData.getSistol() != null) {
-                        tvSistol.setText(mData.getSistol());
-                    }
-
-                    if (mData.getDiastol() != null) {
-                        tvDiastol.setText(mData.getDiastol());
-                    }
-
 
                     tvNama.setText(mData.getNama());
                     tvNama.setAllCaps(true);
@@ -175,7 +168,15 @@ public class MainActivity extends AppCompatActivity {
                     for (DataSnapshot ds : datasnapshot.getChildren()) {
                         Patients mModel = ds.getValue(Patients.class);
 
+                        //to show sistol and diastol data
+                        if (mModel.getSistol() != null) {
+                            tvSistol.setText(mModel.getSistol());
+                        }
+                        if (mModel.getDiastol() != null) {
+                            tvDiastol.setText(mModel.getDiastol());
+                        }
 
+                        //to show list data
                         if (mModel.getEmail() != null) {
                             mListPatients.add(mModel);
                         } else {
@@ -209,11 +210,14 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new RecyclerViewAdapter.ListClickListener() {
             @Override
-            public void onItemClick(int position, View v, String deskripsi, String disease, String id) {
+            public void onItemClick(int position, View v, String deskripsi, String disease, String id,
+                                    String id_check, String dokter) {
                 Intent i = new Intent(MainActivity.this, HistoryActivity.class);
                 i.putExtra(EXTRA_ID, id);
                 i.putExtra(EXTRA_DISEASE, disease);
                 i.putExtra(EXTRA_DESKRIPSI, deskripsi);
+                i.putExtra(EXTRA_ID_CHECK, id_check);
+                i.putExtra(EXTRA_DOKTER, dokter);
                 startActivity(i);
             }
         });

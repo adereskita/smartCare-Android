@@ -81,6 +81,28 @@
                 android:layout_margin="16dp"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:text="Sys"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_sistol"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sistol"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sistol" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:text="Dia"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_diastol"
+                    app:layout_constraintStart_toEndOf="@+id/tv_diastol"
+                    app:layout_constraintTop_toTopOf="@+id/tv_diastol" />
+
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline10"
                     android:layout_width="wrap_content"
@@ -107,12 +129,16 @@
                     android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:text="/"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/tv_diastol"
                     app:layout_constraintEnd_toStartOf="@+id/tv_diastol"
-                    app:layout_constraintStart_toEndOf="@+id/tv_sistol"
+                    app:layout_constraintStart_toEndOf="@+id/textView23"
                     app:layout_constraintTop_toBottomOf="@+id/tv_sistol" />
 
                 <TextView
@@ -130,18 +156,17 @@
 
                 <TextView
                     android:id="@+id/tv_sistol"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="-"
-                    android:textSize="24sp"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guideline9"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/tv_diastol"
@@ -150,7 +175,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:text="-"
-                    android:textSize="24sp"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline10"

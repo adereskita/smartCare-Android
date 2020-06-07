@@ -46,7 +46,11 @@ public class RecyclerHistoryAdapter extends RecyclerView.Adapter<RecyclerHistory
         deskripsi = mPatient.getDeskripsi();
         disease = mPatient.getDisease();
         id = mPatient.getId_check();
+        diastol = mPatient.getDiastol();
+        sistol = mPatient.getSistol();
         tanggal = mPatient.getTanggal();
+        id_check =  mPatient.getId_check();
+        dokter =  mPatient.getNama_dokter();
     }
 
     @Override
@@ -56,14 +60,14 @@ public class RecyclerHistoryAdapter extends RecyclerView.Adapter<RecyclerHistory
     }
 
     public interface ListClickListener {
-        void onItemClick(int position, View v, String deskripsi, String disease, String id);
+        void onItemClick(int position, View v, String deskripsi, String dokter, String disease, String id, String id_check);
     }
 
     public void setOnItemClickListener(ListClickListener clickListener) {
         RecyclerHistoryAdapter.mListener = clickListener;
     }
 
-    private String deskripsi, disease, id, tanggal;
+    private String deskripsi, disease, id, tanggal, sistol, diastol, id_check, dokter;
 
     public Patients getItem(int position) {
         return mData.get(position);
@@ -92,6 +96,9 @@ public class RecyclerHistoryAdapter extends RecyclerView.Adapter<RecyclerHistory
                 public void onClick(View v) {
                     String shareBody = "Penyakit : "+disease + "\n" +
                                         "Tanggal : "+tanggal + "\n" +
+                                        "Dokter : "+dokter + "\n" +
+                                        "Sistol : "+sistol + "\n" +
+                                        "Diastol : "+diastol + "\n" +
                                         "Saran Dokter : " +deskripsi;
                     Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                     sharingIntent.setType("text/plain");
@@ -104,7 +111,7 @@ public class RecyclerHistoryAdapter extends RecyclerView.Adapter<RecyclerHistory
 
         @Override
         public void onClick(View v) {
-            mListener.onItemClick(getAdapterPosition(), v, deskripsi, disease, id);
+            mListener.onItemClick(getAdapterPosition(), v, deskripsi, dokter, disease, id, id_check);
         }
     }
 }

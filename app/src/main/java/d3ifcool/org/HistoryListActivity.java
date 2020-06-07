@@ -30,7 +30,9 @@ public class HistoryListActivity extends AppCompatActivity {
 
     public static final String EXTRA_DISEASE = "extra_disease";
     public static final String EXTRA_ID = "extra_id";
+    public static final String EXTRA_ID_CHECK = "extra_id_check";
     public static final String EXTRA_DESKRIPSI = "extra_deskripsi";
+    public static final String EXTRA_DOKTER =  "extra_dokter";
 
     private ArrayList<Patients> mListPatients;
     private RecyclerHistoryAdapter adapter;
@@ -126,11 +128,13 @@ public class HistoryListActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new RecyclerHistoryAdapter.ListClickListener() {
             @Override
-            public void onItemClick(int position, View v, String deskripsi, String disease, String id) {
+            public void onItemClick(int position, View v, String deskripsi, String dokter, String disease, String id, String id_check) {
                 Intent i = new Intent(HistoryListActivity.this, HistoryActivity.class);
                 i.putExtra(EXTRA_ID, id);
                 i.putExtra(EXTRA_DISEASE, disease);
                 i.putExtra(EXTRA_DESKRIPSI, deskripsi);
+                i.putExtra(EXTRA_ID_CHECK, id_check);
+                i.putExtra(EXTRA_DOKTER, dokter);
                 startActivity(i);
             }
         });
