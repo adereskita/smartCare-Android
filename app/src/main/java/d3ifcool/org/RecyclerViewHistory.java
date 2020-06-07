@@ -58,14 +58,6 @@ public class RecyclerViewHistory extends RecyclerView.Adapter<RecyclerViewHistor
             iv_obat = itemView.findViewById(R.id.iv_obat);
             tvNamaObat = itemView.findViewById(R.id.tv_obat);
             tvKeterangan = itemView.findViewById(R.id.tv_obat_desc);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(mContext, HistoryActivity.class);
-                    mContext.startActivity(i);
-                }
-            });
         }
     }
 }

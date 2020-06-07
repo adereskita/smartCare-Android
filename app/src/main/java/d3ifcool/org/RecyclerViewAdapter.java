@@ -48,6 +48,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         deskripsi = mPatient.getDeskripsi();
         disease = mPatient.getDisease();
         id = mPatient.getId_check();
+        diastol = mPatient.getDiastol();
+        sistol = mPatient.getSistol();
         tanggal = mPatient.getTanggal();
         id_check =  mPatient.getId_check();
         dokter =  mPatient.getNama_dokter();
@@ -67,7 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         RecyclerViewAdapter.mListener = clickListener;
     }
 
-    private String deskripsi, disease, id, tanggal, id_check, dokter;
+    private String deskripsi, disease, id, tanggal, sistol, diastol, id_check, dokter;
 
     public Patients getItem(int position) {
         return mData.get(position);
@@ -96,6 +98,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 public void onClick(View v) {
                     String shareBody = "Penyakit : "+disease + "\n" +
                                         "Tanggal : "+tanggal + "\n" +
+                                        "Dokter : "+dokter + "\n" +
+                                        "Sistol : "+sistol + "\n" +
+                                        "Diastol : "+diastol + "\n" +
                                         "Saran Dokter : " +deskripsi;
                     Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                     sharingIntent.setType("text/plain");
