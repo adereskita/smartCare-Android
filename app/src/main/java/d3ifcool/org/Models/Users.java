@@ -1,10 +1,17 @@
 package d3ifcool.org.Models;
 
 public class Users {
-    private String user_id, nama, email, gender, berat, umur, tinggi, sistol, diastol;
+    private String user_id, id_nik, nama, email, gender, berat, umur, tinggi, sistol, diastol;
 
     public Users(String user_id, String nama, String email) {
         this.user_id = user_id;
+        this.nama = nama;
+        this.email = email;
+    }
+
+    public Users(String user_id, String id_nik, String nama, String email) {
+        this.user_id = user_id;
+        this.id_nik = id_nik;
         this.nama = nama;
         this.email = email;
     }
@@ -33,6 +40,14 @@ public class Users {
 
     public Users() {
 
+    }
+
+    public String getId_nik() {
+        return id_nik;
+    }
+
+    public void setId_nik(String id_nik) {
+        this.id_nik = id_nik;
     }
 
     public String getSistol() {

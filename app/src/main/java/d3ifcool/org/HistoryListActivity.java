@@ -40,7 +40,7 @@ public class HistoryListActivity extends AppCompatActivity {
 
     private TextView tvNama, tvDarah, tvTinggi, tvBerat, tvUmur, tvNull;
     private Button btn_see_more;
-    private String UserId,userEmail;
+    private String UserId,userEmail, id_nik;
 
     //db
     private FirebaseAuth mFirebaseAuth;
@@ -82,30 +82,48 @@ public class HistoryListActivity extends AppCompatActivity {
 
     private void setData() {
 
-        DatabaseReference symtomps = mDbRef.child("Pasien");
-        Query mSearchQuery = symtomps.orderByChild("email").equalTo(userEmail);
-
-        mSearchQuery.addValueEventListener(new ValueEventListener() {
+        DatabaseReference users = mDbRef.child("user").child(UserId);
+        users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                mListPatients = new ArrayList<>();
-                if (datasnapshot.exists()) {
+                if (datasnapshot.exists()){
+                    Users mData = new Users();
 
-                    mListPatients.clear();
-                    for (DataSnapshot ds : datasnapshot.getChildren()) {
-                        Patients mModel = ds.getValue(Patients.class);
+                    mData.setId_nik(datasnapshot.getValue(Users.class).getId_nik());
+
+                    id_nik = mData.getId_nik().trim().toString();
+
+                    DatabaseReference symtomps = mDbRef.child("Pasien");
+                    Query mSearchQuery = symtomps.orderByChild("id_nik").equalTo(id_nik);
+
+                    mSearchQuery.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            mListPatients = new ArrayList<>();
+                            if (datasnapshot.exists()) {
+
+                                mListPatients.clear();
+                                for (DataSnapshot ds : datasnapshot.getChildren()) {
+                                    Patients mModel = ds.getValue(Patients.class);
 
 
-                        if (mModel.getEmail() != null) {
-                            mListPatients.add(mModel);
-                        } else {
-                            mListPatients.remove(mModel);
+                                    if (mModel.getEmail() != null) {
+                                        mListPatients.add(mModel);
+                                    } else {
+                                        mListPatients.remove(mModel);
+                                    }
+                                }
+                                RecyclerViewInit();
+                            }
                         }
-                    }
-                    RecyclerViewInit();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

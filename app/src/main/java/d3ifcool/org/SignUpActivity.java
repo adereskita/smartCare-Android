@@ -24,7 +24,7 @@ import d3ifcool.org.Models.Users;
 public class SignUpActivity extends AppCompatActivity {
 
     private Button btn_signUp;
-    private EditText mNama,mEmail,mPassword;
+    private EditText mNama,mEmail, mNik, mPassword;
     private ProgressBar mProgressBar;
 
     private DatabaseReference dbUser;
@@ -39,6 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         mProgressBar = findViewById(R.id.progress_bar);
+        mNik = findViewById(R.id.edt_nik);
         mNama = findViewById(R.id.edt_nama);
         mEmail = findViewById(R.id.edt_email);
         mPassword = findViewById(R.id.edt_password);
@@ -55,10 +56,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void addUser(){
         final String name = mNama.getText().toString().trim();
+        final String nik = mNik.getText().toString().trim();
         final String email = mEmail.getText().toString().trim();
         final String passwd = mPassword.getText().toString().trim();
 
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(passwd)){
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(nik) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(passwd)){
 
             if (passwd.length() < 6){
                 Toast.makeText(getApplicationContext(),"Password is too short.", Toast.LENGTH_SHORT).show();
@@ -83,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 String id = mUser.getUid();
 
-                                Users user = new Users(id, name, email);
+                                Users user = new Users(id, nik, name, email);
 
                                 dbUser.child(id).setValue(user);
 

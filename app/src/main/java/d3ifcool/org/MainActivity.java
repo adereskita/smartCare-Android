@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private CircleImageView circleImageView;
     private TextView tvNama, tvSistol, tvDiastol, tvTinggi, tvBerat, tvUmur, tvNull;
     private Button btn_see_more;
-    private String UserId,userEmail;
+    private String UserId,userEmail, id_nik;
     private String gender = null;
 
     private ConstraintLayout const_profile;
@@ -106,12 +106,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void setData() {
         // to show basic data user
+
         DatabaseReference users = mDbRef.child("user").child(UserId);
         users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 if (datasnapshot.exists()){
                     Users mData = new Users();
+
+                    mData.setId_nik(datasnapshot.getValue(Users.class).getId_nik());
                     mData.setNama(datasnapshot.getValue(Users.class).getNama());
                     mData.setGender(datasnapshot.getValue(Users.class).getGender());
                     mData.setUmur(datasnapshot.getValue(Users.class).getUmur());
@@ -121,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
 //                    mData.setSistol(datasnapshot.getValue(Users.class).getSistol());
 
                     gender = mData.getGender();
+                    id_nik = mData.getId_nik().trim().toString();
+
 
                     if (mData.getUmur() != null) {
                         tvUmur.setText(mData.getUmur());
@@ -144,6 +149,44 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         circleImageView.setImageResource(R.drawable.avatar);
                     }
+
+                    DatabaseReference symtomps = mDbRef.child("Pasien");
+                    Query mSearchQuery = symtomps.orderByChild("id_nik").equalTo(id_nik);
+
+                    mSearchQuery.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            mListPatients = new ArrayList<>();
+                            if (datasnapshot.exists()) {
+
+                                mListPatients.clear();
+                                for (DataSnapshot ds : datasnapshot.getChildren()) {
+                                    Patients mModel = ds.getValue(Patients.class);
+
+                                    //to show sistol and diastol data
+                                    if (mModel.getSistol() != null) {
+                                        tvSistol.setText(mModel.getSistol());
+                                    }
+                                    if (mModel.getDiastol() != null) {
+                                        tvDiastol.setText(mModel.getDiastol());
+                                    }
+
+                                    //to show list data
+                                    if (mModel.getEmail() != null) {
+                                        mListPatients.add(mModel);
+                                    } else {
+                                        mListPatients.remove(mModel);
+                                    }
+                                }
+                                RecyclerViewInit();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
             @Override
@@ -155,43 +198,46 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv_history);
 
-        DatabaseReference symtomps = mDbRef.child("Pasien");
-        Query mSearchQuery = symtomps.orderByChild("email").equalTo(userEmail);
+//        System.out.println("NIK: "+ id_nik);
 
-        mSearchQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                mListPatients = new ArrayList<>();
-                if (datasnapshot.exists()) {
 
-                    mListPatients.clear();
-                    for (DataSnapshot ds : datasnapshot.getChildren()) {
-                        Patients mModel = ds.getValue(Patients.class);
-
-                        //to show sistol and diastol data
-                        if (mModel.getSistol() != null) {
-                            tvSistol.setText(mModel.getSistol());
-                        }
-                        if (mModel.getDiastol() != null) {
-                            tvDiastol.setText(mModel.getDiastol());
-                        }
-
-                        //to show list data
-                        if (mModel.getEmail() != null) {
-                            mListPatients.add(mModel);
-                        } else {
-                            mListPatients.remove(mModel);
-                        }
-                    }
-                    RecyclerViewInit();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        DatabaseReference symtomps = mDbRef.child("Pasien");
+//        Query mSearchQuery = symtomps.orderByChild("id_nik").equalTo(id_nik);
+//
+//        mSearchQuery.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+//                mListPatients = new ArrayList<>();
+//                if (datasnapshot.exists()) {
+//
+//                    mListPatients.clear();
+//                    for (DataSnapshot ds : datasnapshot.getChildren()) {
+//                        Patients mModel = ds.getValue(Patients.class);
+//
+//                        //to show sistol and diastol data
+//                        if (mModel.getSistol() != null) {
+//                            tvSistol.setText(mModel.getSistol());
+//                        }
+//                        if (mModel.getDiastol() != null) {
+//                            tvDiastol.setText(mModel.getDiastol());
+//                        }
+//
+//                        //to show list data
+//                        if (mModel.getEmail() != null) {
+//                            mListPatients.add(mModel);
+//                        } else {
+//                            mListPatients.remove(mModel);
+//                        }
+//                    }
+//                    RecyclerViewInit();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
     }
 
